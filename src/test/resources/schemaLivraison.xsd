@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://com.vh.ds/jms.commons.dto" xmlns:tns="http://com.vh.ds/jms.commons.dto"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="livraisonMessage" type="tns:livraisonMessage"/>
+
+    <xs:element name="prospectMessage" type="tns:prospectMessage"/>
+
+    <xs:complexType name="livraisonMessage">
+        <xs:sequence>
+            <xs:element name="voitureId" type="xs:long" minOccurs="0"/>
+            <xs:element name="personne" type="xs:string" minOccurs="0"/>
+            <xs:element name="prospect" type="tns:prospectMessage" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="prospectMessage">
+        <xs:sequence>
+            <xs:element name="personne" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+

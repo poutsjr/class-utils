@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="dtoDucsOrigineArchivage">
+    <xs:sequence>
+      <xs:element name="documentId" type="xs:long" minOccurs="0"/>
+      <xs:element name="dtoDeclarationDucsArchivage" type="dtoDeclarationDucsArchivage" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dtoDeclarationDucsArchivage">
+    <xs:sequence>
+      <xs:element name="declarationDucs" type="dtoDeclarationDucs" minOccurs="0"/>
+      <xs:element name="dtoAdherentList" type="dtoAdherent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="dtoLigneCotisationList" type="dtoLigneCotisation" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="entitesId">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="key" minOccurs="0" type="xs:string"/>
+                  <xs:element name="value" minOccurs="0" type="arrayList"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dtoDeclarationDucs">
+    <xs:complexContent>
+      <xs:extension base="dtoAbstractDocument">
+        <xs:sequence>
+          <xs:element name="authentification" type="xs:string" minOccurs="0"/>
+          <xs:element name="client" type="dtoPersonneMorale" minOccurs="0"/>
+          <xs:element name="commentaire" type="xs:string" minOccurs="0"/>
+          <xs:element name="creEdi" type="dtoCreEdi" minOccurs="0"/>
+          <xs:element name="datePreparation" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="declarationId" type="xs:long" minOccurs="0"/>
+          <xs:element name="destinataire" type="dtoPersonneMorale" minOccurs="0"/>
+          <xs:element name="deviseDeclaration" type="xs:string" minOccurs="0"/>
+          <xs:element name="deviseMontantAjoute" type="xs:string" minOccurs="0"/>
+          <xs:element name="deviseMontantDeduit" type="xs:string" minOccurs="0"/>
+          <xs:element name="deviseMontantTotal" type="xs:string" minOccurs="0"/>
+          <xs:element name="editeurLogicielPaie" type="xs:string" minOccurs="0"/>
+          <xs:element name="effectif" type="xs:long" minOccurs="0"/>
+          <xs:element name="emetteur" type="dtoPersonneMorale" minOccurs="0"/>
+          <xs:element name="entites">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="key" minOccurs="0" type="dtoAdherent"/>
+                      <xs:element name="value" minOccurs="0" type="arrayList"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="heurePreparation" type="xs:short" minOccurs="0"/>
+          <xs:element name="indicateurEssai" type="xs:unsignedShort" minOccurs="0"/>
+          <xs:element name="indicateurMessage" type="xs:string" minOccurs="0"/>
+          <xs:element name="indicateurRegularisation" type="xs:string" minOccurs="0"/>
+          <xs:element name="ligneCommentaire" type="xs:string" minOccurs="0"/>
+          <xs:element name="ligneMessage" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="montantAjoute" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="montantDeduit" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="montantTotal" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="nomLogicielPaie" type="xs:string" minOccurs="0"/>
+          <xs:element name="nombreLignes" type="xs:long" minOccurs="0"/>
+          <xs:element name="numeroEditionPlat" type="xs:short" minOccurs="0"/>
+          <xs:element name="numeroIndicateurRegularisation" type="xs:unsignedShort" minOccurs="0"/>
+          <xs:element name="numeroVersionPlat" type="xs:short" minOccurs="0"/>
+          <xs:element name="numeroVersionPlaym" type="xs:string" minOccurs="0"/>
+          <xs:element name="periodeReference" type="xs:string" minOccurs="0"/>
+          <xs:element name="periodeVersementSalaire" type="xs:string" minOccurs="0"/>
+          <xs:element name="qualifiantPeriode" type="xs:string" minOccurs="0"/>
+          <xs:element name="qualifiantPeriodeVersementSalaire" type="xs:string" minOccurs="0"/>
+          <xs:element name="referenceCommuneEchange" type="xs:string" minOccurs="0"/>
+          <xs:element name="referenceDeclaration" type="xs:string" minOccurs="0"/>
+          <xs:element name="statutJuridique" type="xs:string" minOccurs="0"/>
+          <xs:element name="statutUsm" type="xs:short" minOccurs="0"/>
+          <xs:element name="tiersDeclarant" type="dtoPersonneMorale" minOccurs="0"/>
+          <xs:element name="typeBordereau" type="xs:string" minOccurs="0"/>
+          <xs:element name="typeDeclaration" type="xs:string" minOccurs="0"/>
+          <xs:element name="typeReponse" type="xs:string" minOccurs="0"/>
+          <xs:element name="versionLogicielPaie" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="dtoAbstractDocument" abstract="true">
+    <xs:sequence>
+      <xs:element name="documentId" type="xs:long" minOccurs="0"/>
+      <xs:element name="metier" type="xs:string" minOccurs="0"/>
+      <xs:element name="periode" type="xs:long" minOccurs="0"/>
+      <xs:element name="typePeriode" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dtoPersonneMorale">
+    <xs:complexContent>
+      <xs:extension base="dtoPersonne">
+        <xs:sequence>
+          <xs:element name="irc" type="xs:string" minOccurs="0"/>
+          <xs:element name="nic" type="xs:string" minOccurs="0"/>
+          <xs:element name="raisonSociale" type="xs:string" minOccurs="0"/>
+          <xs:element name="serviceCollaborateur" type="xs:string" minOccurs="0"/>
+          <xs:element name="siren" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="dtoPersonne">
+    <xs:sequence>
+      <xs:element name="adresses" type="dtoAdresse" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="canals">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="key" minOccurs="0" type="typeCanal"/>
+                  <xs:element name="value" minOccurs="0" type="dtoCanal"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="idPersonne" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dtoAdresse">
+    <xs:sequence>
+      <xs:element name="codePostal" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="rue1" type="xs:string" minOccurs="0"/>
+      <xs:element name="rue2" type="xs:string" minOccurs="0"/>
+      <xs:element name="ville" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dtoCanal">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="libelle" type="xs:string" minOccurs="0"/>
+      <xs:element name="type" type="typeCanal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dtoCreEdi">
+    <xs:sequence>
+      <xs:element name="codeInstitution" type="xs:string" minOccurs="0"/>
+      <xs:element name="creCId" type="xs:long" minOccurs="0"/>
+      <xs:element name="emailEmetteur" type="xs:string" minOccurs="0"/>
+      <xs:element name="identifiantDeclaration" type="xs:string" minOccurs="0"/>
+      <xs:element name="identifiantFlux" type="xs:string" minOccurs="0"/>
+      <xs:element name="nomEmetteur" type="xs:string" minOccurs="0"/>
+      <xs:element name="nomInstitution" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dtoAdherent">
+    <xs:complexContent>
+      <xs:extension base="dtoPersonneMorale">
+        <xs:sequence>
+          <xs:element name="idLienDucsAdherent" type="xs:long" minOccurs="0"/>
+          <xs:element name="numeroAdherent" type="xs:string" minOccurs="0"/>
+          <xs:element name="situation" type="xs:string" minOccurs="0"/>
+          <xs:element name="typeAppel" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="arrayList">
+        <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="dtoLigneCotisation">
+    <xs:sequence>
+      <xs:element name="calculNombreForfaits" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeAssiette" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeCategorieCotisation" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeCpn" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeDevise1" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeDevise2" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeInstruction" type="xs:string" minOccurs="0"/>
+      <xs:element name="cotCId" type="xs:long" minOccurs="0"/>
+      <xs:element name="dateReference" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="effectif" type="xs:long" minOccurs="0"/>
+      <xs:element name="libelleCategorieCotisation" type="xs:string" minOccurs="0"/>
+      <xs:element name="libelleConditionsSpeciales" type="xs:string" minOccurs="0"/>
+      <xs:element name="libelleRisque" type="xs:string" minOccurs="0"/>
+      <xs:element name="masseSalariale" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="montant" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="montantCumuleAssiettesT1T2T3" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="montantCumuleForfaitsT1T2T3" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="nombreForfaits" type="xs:long" minOccurs="0"/>
+      <xs:element name="numeroInstitution" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroLigne" type="xs:int" minOccurs="0"/>
+      <xs:element name="partSalarialeResultante" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="qualifiantDateReference" type="xs:string" minOccurs="0"/>
+      <xs:element name="qualifiantInstruction" type="xs:string" minOccurs="0"/>
+      <xs:element name="qualifiantLigne" type="xs:string" minOccurs="0"/>
+      <xs:element name="qualifiantReference1" type="xs:string" minOccurs="0"/>
+      <xs:element name="qualifiantReference2" type="xs:string" minOccurs="0"/>
+      <xs:element name="sigleInstitution" type="xs:string" minOccurs="0"/>
+      <xs:element name="taux" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="typeAssiette" type="xs:string" minOccurs="0"/>
+      <xs:element name="typeMontant" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="typeCanal">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TELEPHONE"/>
+      <xs:enumeration value="PORTABLE"/>
+      <xs:enumeration value="FAX"/>
+      <xs:enumeration value="EMAIL"/>
+      <xs:enumeration value="TELEPHONE_PRO"/>
+      <xs:enumeration value="FAX_PRO"/>
+      <xs:enumeration value="SITE_INTERNET"/>
+      <xs:enumeration value="PORTABLE_PRO"/>
+      <xs:enumeration value="EMAIL_PRO"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
