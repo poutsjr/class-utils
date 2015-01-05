@@ -1,4 +1,4 @@
 class-utils
 ===========
 
-fork from google code vh-class-util
+forked from google code vh-class-util
